@@ -1,12 +1,13 @@
 from flask import Flask, render_template,url_for
 from flask import request,session,g,redirect
 from flask_sqlalchemy import SQLAlchemy
+from config import *
 import pymysql
 
 app = Flask(__name__,static_url_path='/')
 app.config['SECRET_KEY'] = "dsadsaffds"  # 设置生成session ID
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123@8.142.98.163:3306/py_flask'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI  # 'mysql+pymysql://root:123@8.142.98.163:3306/py_flask'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = SQLALCHEMY_TRACK_MODIFICATIONS
 db = SQLAlchemy(app)  # 实例化对象
 
 @app.route('/')
