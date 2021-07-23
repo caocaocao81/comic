@@ -1,0 +1,820 @@
+{% extends "template.html" %}
+
+
+{% block link %}
+
+{% endblock %}
+
+{% block head_bg %}
+<!-- 焦点图 -->
+<div class="header-banner">
+  <!-- style="background:url({{url_for('static',filename='images/22.jpg')}}) ;" -->
+  <a href="#" class="bg" ></a>
+  <span class="text">这辆车……到底能不能上啊！！！</span>
+  <!-- style="background:url({{url_for('static',filename='images/22.jpg')}}) ;" -->
+  <a href="#" class="link"></a> 
+</div>
+{% endblock %}
+
+{% block header_nav %}
+<!-- 导航 -->
+<div class="header-nav">
+  <div class="nav-wrap auto-width clearfix">
+    <a href="#" class="nav-item nav-cur">首页</a>
+    <a href="#" class="nav-item">番剧</a>
+    <!-- for循环下面列表 -->
+    <a href="#" class="nav-item nav-item_hover">动画</a>
+    <a href="#" class="nav-item nav-item_hover">音乐</a>
+    <a href="#" class="nav-item nav-item_hover">舞蹈</a>
+    <a href="#" class="nav-item nav-item_hover">游戏</a>
+    <a href="#" class="nav-item nav-item_hover">娱乐</a>
+    <a href="#" class="nav-item nav-item_hover">科技</a>
+    <a href="#" class="nav-item nav-item_hover">影视</a>
+    <a href="#" class="nav-item nav-item_hover">体育</a>
+    <a href="#" class="nav-item nav-item_hover">彼女</a>
+    <a href="#" class="nav-item nav-item_hover">鱼塘</a>
+    <a href="#" class="nav-item nav-item_hover">文章</a>
+    <a href="#" class="nav-item nav-item_hover">合辑</a>
+    <a href="#" class="nav-rank">
+      <i class="iconfont icon-rank"></i>
+      全站排行榜
+    </a>
+  </div>
+
+  <div class="subNav">
+    <!-- for循环 -->
+    <ul class="auto-width">
+      <!-- for循环 -->
+      <li class="subNav-item">
+        <a href="#">动画短片</a>
+        <a href="#">动画资讯</a>
+        <a href="#">旧番补档</a>
+        <a href="#">新番连载</a>
+        <a href="#">MAD·AMV</a>
+        <a href="#">MMD·3D</a>
+        <a href="#">2.5次元</a>
+        <a href="#">国产动画</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">原创·翻唱</a>
+        <a href="#">演奏</a>
+        <a href="#">Vocaloid</a>
+        <a href="#">日系音乐</a>
+        <a href="#">综合音乐</a>
+        <a href="#">演唱会</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">宅舞</a>
+        <a href="#">综合舞蹈</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">主机单机</a>
+        <a href="#">游戏集锦</a>
+        <a href="#">电子竞技</a>
+        <a href="#">LOL</a>
+        <a href="#">守望先锋</a>
+        <a href="#">桌游卡牌</a>
+        <a href="#">Mugen</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">生活娱乐</a>
+        <a href="#">鬼畜调教</a>
+        <a href="#">萌宠</a>
+        <a href="#">美食</a>
+        <a href="#">综艺</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">SF</a>
+        <a href="#">黑科技</a>
+        <a href="#">数码</a>
+        <a href="#">广告</a>
+        <a href="#">白科技</a>
+        <a href="#">自我发电</a>
+        <a href="#">科学技术</a>
+        <a href="#">汽车</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">电影</a>
+        <a href="#">日剧</a>
+        <a href="#">美剧</a>
+        <a href="#">国产剧</a>
+        <a href="#">网络剧</a>
+        <a href="#">韩剧</a>
+        <a href="#">布袋·特摄</a>
+        <a href="#">纪录片</a>
+        <a href="#">其他</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">综合体育</a>
+        <a href="#">足球</a>
+        <a href="#">篮球</a>
+        <a href="#">搏击</a>
+        <a href="#">11区体育</a>
+        <a href="#">惊奇体育</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">造型</a>
+        <a href="#">西皮</a>
+        <a href="#">爱豆</a>
+        <a href="#">其他</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">军事</a>
+        <a href="#">历史</a>
+        <a href="#">焦点</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">文章综合</a>
+        <a href="#">工作·情感</a>
+        <a href="#">漫画·轻小说</a>
+        <a href="#">游戏</a>
+      </li>
+      <li class="subNav-item">
+        <a href="#">AcFun专题</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+</div>
+
+{% block main %}
+<!---------- 主体内容 ---------->
+<div id="main">
+<div class="auto-width clearfix">
+  
+  <!-- 幻灯片部分 -->
+  <section class="area clearfix area-slider">
+    <div id="sliderBox" class="slider-box fl">
+      <!-- for循环 -->
+      <ul class="slider">
+        <li data-title="Picture 1" class="slider-item"><a href="#"><img src="images/cont/slider-1.jpg" alt="#"></a></li>
+        <li data-title="Picture 2" class="slider-item"><a href="#"><img src="images/cont/slider-2.jpg" alt="#"></a></li>
+        <li data-title="Picture 3" class="slider-item"><a href="#"><img src="images/cont/slider-3.jpg" alt="#"></a></li>
+        <li data-title="Picture 4" class="slider-item"><a href="#"><img src="images/cont/slider-4.jpg" alt="#"></a></li>
+        <li data-title="Picture 5" class="slider-item"><a href="#"><img src="images/cont/slider-5.jpg" alt="#"></a></li>
+      </ul>
+      <div class="btn-box">
+        <a href="javascript:;" class="btn-item btn-item__active"></a>
+        <a href="javascript:;" class="btn-item"></a>
+        <a href="javascript:;" class="btn-item"></a>
+        <a href="javascript:;" class="btn-item"></a>
+        <a href="javascript:;" class="btn-item"></a>
+      </div>
+    </div>
+    <!-- for循环 -->
+    <ul class="slider-menu fl">
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__1.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__2.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__3.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__4.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__6.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="slider-menu__item">
+        <a href="#" class="item">
+          <img src="images/cont/slider-menu__5.jpg" alt="#">
+          <div class="mask-gradient">
+            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
+            <div class="text-box">
+              <em>UP: AcFun出品</em>
+              <span class="info">
+                <i class="iconfont icon-collect">14.9万</i>
+                <i class="iconfont icon-collect">165</i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 热门推荐 -->
+  <section class="area clearfix area-recommend">
+    <header class="area-header">
+      <h2 class="title">
+        <img src="images/area-title__1.gif" alt="#">
+        <b>热门推荐</b>
+        <em>十分好评快来看啦</em>
+      </h2>
+    </header>
+    <div class="area-cont">
+      <div class="area-main fl">
+        <!-- for循环 -->
+        <ul class="area-menu fl clearfix">
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+            </a>
+            <div class="info">
+              <a href="#" class="title">这只喵技能树突破天际啦!</a>
+              <a href="#" class="userName">UP: iphone猫</a>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__2.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+            </a>
+            <div class="info">
+              <a href="#" class="title">这只喵技能树突破天际啦!</a>
+              <a href="#" class="userName">UP: iphone猫</a>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__3.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+            </a>
+            <div class="info">
+              <a href="#" class="title">这只喵技能树突破天际啦!</a>
+              <a href="#" class="userName">UP: iphone猫</a>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__4.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+            </a>
+            <div class="info">
+              <a href="#" class="title">这只喵技能树突破天际啦!</a>
+              <a href="#" class="userName">UP: iphone猫</a>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__5.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+            </a>
+            <div class="info">
+              <a href="#" class="title">这只喵技能树突破天际啦!</a>
+              <a href="#" class="userName">UP: iphone猫</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="area-side fr">
+        <a href="#"><img src="images/cont/slider-menu__6.jpg" alt="#"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 动画 -->
+  <section class="area clearfix area-game">
+    <div class="area-cont">
+      <div class="area-main fl">
+        <header class="area-header">
+          <h2 class="title">
+            <img src="images/area-title__7.gif" alt="#">
+            <b>热门漫画</b>
+            <em>大力喂蕉不要停</em>
+          </h2>
+          <!-- 需要实现换一批的功能 -->
+          <!-- 简单实现：点击换一批用一个随机函数（设计为获取id与当前页视频id可相同）获取一些无重复id号，图片与路径根据id命名
+          数据不需要放在数据库   -->
+          <a href="#" class="change">
+            <i class="iconfont icon-rank"></i>
+            换一批
+          </a>
+          <!-- 显示更多 -->
+          <a href="#" class="more">More ></a>
+        </header>
+        <div class="area-big">
+          <a href="#" class="img">
+            <img src="images/cont/area-menu__big.gif" alt="#">
+            <i class="iconfont icon-play"></i>
+            <span class="mask">
+              <em class="time">4:47</em>
+            </span>
+          </a>
+        </div>
+        <!-- for循环 jinja2中for循环为：{% for i in xxx %}  {% endfor %} 然后那些格式类似的列表for循环给予i的值即可-->
+        <ul class="area-menu clearfix">
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+          <li class="area-menu__item">
+            <a href="#" class="img">
+              <img src="images/cont/area-menu__1.jpg" alt="#">
+              <span class="mask">
+                <em class="time">4:47</em>
+              </span>
+              <span class="icon-recommend">推荐</span>
+            </a>
+            <div class="info">
+              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <span class="play-info clearfix">
+                <i class="iconfont icon-play fl">2372</i>
+                <i class="iconfont icon-collect fr">999</i>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="area-side fr" JS-tab="true">
+        <header class="area-header">
+          <h2 class="title">
+            <b>动画排行榜</b>
+          </h2>
+          <div class="tab-rank tab fr">
+            <a href="javascript:;" class="tab-rank__item active">日榜</a>
+            <a href="javascript:;" class="tab-rank__item">周榜</a>
+          </div>
+        </header>
+        <div class="side-rank">
+          <!-- for循环 -->
+          <ul class="tab-cont tab-cont__active">
+            <li class="has-img">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img1.jpg" alt="#">
+                <span class="rank">1</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li class="has-img">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img1.jpg" alt="#">
+                <span class="rank">2</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li class="has-img last">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img1.jpg" alt="#">
+                <span class="rank">3</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">4</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">5</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">6</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">7</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">8</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">9</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">10</span>
+                微小而确实的幸福
+              </a>
+            </li>
+          </ul>
+          <!-- for循环 -->
+          <ul class="tab-cont">
+            <li class="has-img">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img2.jpg" alt="#">
+                <span class="rank">1</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li class="has-img">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img2.jpg" alt="#">
+                <span class="rank">2</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li class="has-img last">
+              <a href="#" class="img fl">
+                <img src="images/cont/side-img2.jpg" alt="#">
+                <span class="rank">3</span>
+              </a>
+              <div class="info fr">
+                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
+                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <p>
+                  <i class="iconfont icon-play fl">9898</i>
+                  <i class="iconfont icon-collect fr">9898</i>
+                </p>
+              </div>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">4</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">5</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">6</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">7</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">8</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">9</span>
+                微小而确实的幸福
+              </a>
+            </li>
+            <li>                  
+              <a href="#" class="rank-item text-overflow">
+                <span class="rank-num">10</span>
+                微小而确实的幸福
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="more">查看完整榜单 ></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 广告 -->
+  <div class="area clearfix area-ad">
+    <a href="#" class="fl"><img src="images/cont/ad2.png" alt="#"></a>
+    <a href="#" class="fr"><img src="images/cont/ad3.png" alt="#"></a>
+  </div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!---------- 底部内容 ---------->
+<div id="footer">
+<div class="container auto-width">
+  <div class="footer-top clearfix">
+    <div class="footer-nav fl">
+      <div class="item">
+        <h4>合作</h4>
+        <p>
+          <a href="#">关于我们</a>
+          <a href="#">联系我们</a>
+          <br>
+        </p>
+      </div>
+      <span class="line"></span>
+      <span class="line"></span>
+      <div class="item">
+        <h4>下载</h4>
+        <p>
+          <a href="#" class="mg-0">移动客户端</a>
+          <span class="new">new</span>
+          <br>
+          <a href="#">AC娘表情包</a>
+        </p>
+      </div>
+      <span class="line"></span>
+      <div class="item">
+        <h4>链接</h4>
+        <p>
+          <a href="#">百度</a>
+          <a href="#">哔哩哔哩</a>
+        </p>
+      </div>
+      <span class="line"></span>
+      <div class="item">
+        <h4>反馈</h4>
+        <p>
+          <a href="#">意见反馈</a>
+          <a href="#">举报</a>
+          <a href="#">帮助中心</a>
+          <br>
+          <a href="#">免责声明</a>
+          <a href="#">用户协议</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-img fr">
+      <img src="images/footer-logo.gif" alt="#">
+    </div>
+  </div>
+  <div class="footer-middle clearfix">
+    <div class="item">
+      <a href="#"><i class="icon icon-1"></i>中国互联网举报中心</a>
+      <a href="#"><i class="icon icon-2"></i>网络文化经营单位</a>
+    </div>
+    <div class="item">
+      <span>京8888888888号</span>
+    </div>
+    <div class="item">
+      <span>节目制作经营许可证66666666666号</span>
+
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <img src="images/logo-gray.png" alt="#">
+    <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。********</p>
+  </div>
+</div>
+</div>
+{% endblock %}
