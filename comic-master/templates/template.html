@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <title>Demo</title>
 
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="font/iconfont.css">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/reset.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='font/iconfont.css')}}">
+  <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   {% block link %}
 
   {% endblock %}
@@ -19,10 +20,10 @@
     <!-- 最顶部 -->
     <div class="header-top">
       <div class="auto-width">
-        <h1 class="logo fl"><a href="#"><img src="images/logo.png" alt="#"></a></h1>
+        <h1 class="logo fl" ><a href="#"><img src="{{url_for('static',filename='images/logo.png')}}" style="vertical-align: top;" alt="#"></a></h1>
         <div class="search-box fl">
-          <form action="#">
-            <input type="text" class="fl search-text" placeholder="Search here...">
+          <form action="{{url_for('commic.get_comic_list',page=1)}}" >
+            <input type="text" class="fl search-text" name="comic_name" placeholder="Search here...">
             <button class="fl search-btn">
               <i class="iconfont icon-search"></i>
             </button>
@@ -63,17 +64,15 @@
           </div>
         </div>
         <ul class="header-guide fr">
-          <li class="guide-item download">
-            <a href="#">
-              <i class="iconfont icon-app"></i>
-              <span>下载客户端</span>
-            </a>
-            <div class="guide-hover">
-              <img src="images/app-download.png" alt="#">
-            </div>
+          <li class="guide-item login">
+            <a href="{{url_for('index')}}">首页</a>
           </li>
           <li class="guide-item login">
-            <a href="#">登录/注册</a>
+            {% if not get_username() %}
+            <a href="{{url_for('login')}}">登录/注册</a>
+            {% else %}
+            <a >欢迎：{{get_username()}}</a>
+            {% endif %}
           </li>
           <li class="guide-item history">
             <a href="#">
@@ -81,18 +80,6 @@
             </a>
             <div class="guide-hover">
               <span class="text">尚未记录任何历史信息。</span>
-              <a href="#" class="more">More</a>
-            </div>
-          </li>
-          <li class="guide-item upload">
-            <a href="#">
-              <i class="iconfont icon-upload"></i>
-            </a>
-            <div class="guide-hover">
-              <ul>
-                <li><a href="#">投视频</a></li>
-                <li><a href="#">投文章</a></li>
-              </ul>
             </div>
           </li>
           <li class="guide-item collect">
@@ -124,11 +111,12 @@
 
 
   <a href="javascript:;" id="back_top" class="iconfont icon-up"></a>
-
-  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/sliderbox.js"></script>
-  <script src="js/tab.js"></script>
+  <script src="{{url_for('static',filename='js/jquery-3.1.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+  <!-- <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+  <script src="{{url_for('static',filename='js/script.js')}}"></script>
+  <script src="{{url_for('static',filename='js/sliderbox.js')}}"></script>
+  <script src="{{url_for('static',filename='js/tab.js')}}"></script>
   {% block script %}
 
   {% endblock %}

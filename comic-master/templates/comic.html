@@ -1,0 +1,183 @@
+{% extends "template.html" %}
+
+{% block link %}
+<link href="{{url_for('static',filename='css/plugins/slick/slick.css')}}" rel="stylesheet">
+<link href="{{url_for('static',filename='css/plugins/slick/slick-theme.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+<link href="{{url_for('static',filename='css/comment.css')}}" rel="stylesheet">
+<style>
+    table.style16 {
+      border-top: 1px dashed #8c8b8b;
+    }
+    table.style16:after {
+      content: '\002702';
+      display: inline-block;
+      position: relative;
+      top: -12px;
+      left: 40px;
+      padding: 0 3px;
+      background: #f0f0f0;
+      color: #8c8b8b;
+      font-size: 18px;
+    }
+    .font_right
+    {
+        background-image:-webkit-linear-gradient(left,#FFC3F0, #FDF784);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        /* color:linear-gradient(to right,#FFC3F0, #FDF784); */
+        font:28px "华文琥珀";
+        text-align:center;
+    }
+</style>
+{% endblock %}
+
+{% block header_nav %}
+<!-- 导航 -->
+<div class="header-nav">
+  <div class="nav-wrap auto-width clearfix">
+    <a href="#" class="nav-item nav-cur">首页</a>
+    {% for i in get_labels() %}
+      <a href="#" class="nav-item nav-item_hover" onclick="get()">{{i}}</a>
+    {% endfor %}
+    <a href="#" class="nav-rank">
+      <i class="iconfont icon-rank"></i>
+      全站排行榜
+    </a>
+  </div>
+
+
+</div>
+{% endblock %}
+
+
+{% block main %}
+
+<div id="main" class="wrapper">
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+    <div class="row border-bottom"></div>
+    </div>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox product-detail">
+                     <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <br>
+                                    <div>
+                                        <img src="{{url_for('static',filename=comic.img)}}"  >
+                                    </div>
+                             </div>
+                            <div class="col-md-4" style="padding-left: 5vh;">
+                                <div class="row">
+                                    <h3>{{comic.ccc}}</h1>
+                                    <a style="color: coral;">作者:{{comic.author}}</a>
+                                    <br>
+                                    <strong>漫画简介</strong><p>{{comic.introduce}}</p>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3" style="padding: 0rem;">
+                                        <a href="#" class="btn btn-warning">观看漫画</a> 
+                                    </div>
+                                    <div class="col-md-1">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        {% if not true%}
+                                        <button onclick="collect()"  data-toggle="tooltip" data-placement="top" title="点击收藏！">
+                                            <i class="fa fa-star" style="font-size: 24px;"></i>
+                                        </button>
+                                        {% else %}
+                                        <button onclick="discollect()"  data-toggle="tooltip" data-placement="top" title="取消收藏！">
+                                            <i class="fa fa-star-o" style="font-size: 24px;"></i>
+                                        </button>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button  onclick="share()">
+                                            <i class="fa fa-share" style="font-size: 24px;"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button onclick="like()" data-toggle="tooltip" data-placement="top" title="点赞数:0" >
+                                            {% if true %}
+                                            <i class="fa fa-heart-o" style="font-size: 24px;"></i>
+                                            {% else %}
+                                            <i class="fa fa-heart" style="font-size: 24px;"></i>
+                                            {% endif %}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2" >
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row wrapper border-bottom white-bg page-heading">
+                            <div class="col-lg-10">
+                                <h2 class="font_right">用户评价</h2>
+                            </div>
+                            <div class="col-lg-2">
+                
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-2">
+                                <div class="container">
+                                    <div class="commentbox" style="width: 100%;">
+                                        <textarea  placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                                        <div class="btn btn-info pull-right" id="comment">评论</div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="{{url_for('static',filename='images/cont/slider-1.jpg')}}" style="width: 100%;" >
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>aaaaaa</p>
+                                            <div class="col-md-2 col-md-offset-4">
+                                                time:{{i}}
+                                            </div>
+                                            <div class="col-md-2">
+                                                    <button id = {{i}} onclick="like()" data-toggle="tooltip" data-placement="top" title="点赞数:0" >
+                                                        {% if true %}
+                                                        <i class="fa fa-heart-o" ></i>
+                                                        {% else %}
+                                                        <i class="fa fa-heart" ></i>
+                                                        {% endif %}
+                                                    </button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static',filename='js/bootstrap.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+{% endblock %}

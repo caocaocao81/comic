@@ -21,7 +21,7 @@
 {% block main %}
 
 <body>
-	<div class="htmleaf-container" style="background: url({{url_for('static',filename='images/22.jpg')}});">
+	<div class="htmleaf-container" >
 		 <div class=" form-bg">
 	        <div class="container">
 
@@ -35,8 +35,9 @@
 	                        <div class="form-group">
 	                            <i class="fa fa-lock"></i><input required name="user_password" type="password" class="form-control" placeholder="Password"/>
 	                        </div>
-                            <div class="form-group">
-	                            <i class="fa fa-lock"></i><input required name="re_password" type="password" class="form-control" placeholder="密码"/>
+                          <div class="form-group">
+                              <img  id="captcha-img" style="padding-bottom: 10px;width: 70%;height: 50px;"  src="{{ url_for('user.get_img') }}" alt="" onclick="flush()"><!--加了id aptcha-img-->
+	                            <input required name="user_vcode" type="text" class="form-control" placeholder="验证码"/>
 	                        </div>
                             <div class="form-group">
 	                            <a>忘记密码？</a>
@@ -50,7 +51,7 @@
                         <h4 class="text-center form1">注册</h4>
 	                    <form class="demo form-horizontal" action="/regist" method="POST">
 	                        <div class="form-group">
-	                            <i class="fa fa-user"></i><input required name="re_name" type="text" class="form-control" placeholder="用户名" id="exampleInputEmail1">
+	                            <i class="fa fa-user"></i><input required name="re_name" type="text" class="form-control" placeholder="用户名" id="exampleInputEmail">
 	                        </div>
                             <div class="form-group">
 	                            <i class="fa fa-envelope"></i><input required name="re_email" type="text" class="form-control" placeholder="邮箱"/>
@@ -155,5 +156,22 @@
 {% block script %}
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript"> 
+  function flush() {
+      document.getElementById("captcha-img").src = "{{url_for('user.get_img')}}"+"?"+Math.random();
+  };
+  $(function(){
+      if('{{ get_flashed_messages()[0]}}'){
+          if(confirm('{{notice}}') == true){
+              return "{{notice}}";
+           }
+           else {
+              return "{{notice}}";
+           }
+       }
+   });
+</script>
+
+
 
 {% endblock %}

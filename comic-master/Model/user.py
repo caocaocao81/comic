@@ -7,7 +7,7 @@ class User(db.Model):
     __table__ = Table('user',MetaData(bind=db.engine),autoload=True)
 
     def insert_user(self,name,pwd,email):
-        insert = User(name=name,pwd=pwd,email=email)
+        insert = User(username=name,password=pwd,email=email)
         db.session.add(insert)
         db.session.commit()
         db.session.close()
@@ -19,7 +19,7 @@ class User(db.Model):
 
     def updata_user(self,email,photo,pwd):  # 更新用户信息
         try:
-            db.session.add(User(email=email,user_photo=photo,pwd=pwd))
+            db.session.add(User(email=email,user_photo=photo,password=pwd))
             db.session.commit()
         except:
             db.session.rollback()
@@ -27,22 +27,22 @@ class User(db.Model):
 
     def check_name_pwd(self,name,pwd):
 
-        a = db.session.query(User).filter(User.name == name,User.pwd == pwd).first()
+        a = db.session.query(User).filter(User.username == name,User.password == pwd).first()
         db.session.close()
         return a
 
     # 用户登录返回的提示信息
     def validate(self,username, pwd1,vcode):
-        user = self.check_name_pwd(username,pwd1)
+        user = db.session.query(User).filter(User.username == username).first()
         md5 = hashlib.md5()
         try:
-            if vcode == session['vcode']:
+            if vcode.upper() == session['vcode'].upper():
                 if user:
                     # 加密密码
                     md5.update(pwd1.encode('utf-8'))
                     pwd_md5 = md5.hexdigest()
-                    if user.pwd == pwd_md5:
-                        return '登陆成功'
+                    if user.password == pwd_md5[0:20]:
+                        return '登录成功'
                     else:
                         return '密码错误'
                 else:
@@ -66,3 +66,18 @@ class User(db.Model):
             return "注册失败请重试"
         else:
             return "注册成功"
+
+    def user_login(self,name,pwd,vcode):  # 验证用户登录
+        try:
+            if vcode == session['vcode']:
+                users = User()
+                # 加密密码
+                md5 = hashlib.md5()  # 设置在函数中防止多次加密和数据库中密码不一致
+                md5.update(pwd.encode('utf-8'))
+                pwd_md5 = md5.hexdigest()
+                a = users.check_name_pwd(name,pwd_md5)
+                return a
+            else:
+                return None
+        except:
+            return None

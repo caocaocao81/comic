@@ -1,0 +1,144 @@
+{% extends "template.html" %}
+{% import 'page.html' as pg %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+<link href="{{url_for('static',filename='css/comment.css')}}" rel="stylesheet">
+<link href="{{url_for('static',filename='css/bootstrap-grid.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block header_nav %}
+<!-- 导航 -->
+<div class="header-nav">
+  <div class="nav-wrap auto-width clearfix">
+    <a href="#" class="nav-item nav-cur">首页</a>
+    {% for i in get_labels() %}
+      <a href="#" class="nav-item nav-item_hover" onclick="get()">{{i}}</a>
+    {% endfor %}
+    <a href="#" class="nav-rank">
+      <i class="iconfont icon-rank"></i>
+      全站排行榜
+    </a>
+  </div>
+
+
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="wrapper" id="main">
+    <div class="row">
+        
+        <div class="col-md-8 col-md-offset-2">
+            <div class="container">
+                {% for i in comic_list %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{url_for('static',filename='images/cont/slider-1.jpg')}}" style="width: 100%;" >
+                    </div>
+                    <div class="col-md-9">
+                        <p>简介:{{i.introduce}}</p>
+                        <div class="container" style="height: 100%;">
+                        <div class="row align-items-end" style="height: 80%;">
+                            <div class="col-md-3">
+                                author:{{i.author}}
+                            </div>
+                            <div class="col-md-3 ">
+                                time:{{i.update_time}}
+                            </div>
+                            <div class="col-md-3 ">
+                                <i class="fa fa-heart-o" > {{i.like_count}}</i>
+                            </div>
+                            <div class="col-md-3">
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+                {{ pg.page(page,"commic.get_comic_list",comic_name) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block footer %}
+<!---------- 底部内容 ---------->
+<div id="footer">
+<div class="container auto-width">
+  <div class="footer-top clearfix">
+    <div class="footer-nav fl">
+      <div class="item">
+        <h4>合作</h4>
+        <p>
+          <a href="#">关于我们</a>
+          <a href="#">联系我们</a>
+          <br>
+        </p>
+      </div>
+      <span class="line"></span>
+      <span class="line"></span>
+      <div class="item">
+        <h4>下载</h4>
+        <p>
+          <a href="#" class="mg-0">移动客户端</a>
+          <span class="new">new</span>
+          <br>
+          <a href="#">AC娘表情包</a>
+        </p>
+      </div>
+      <span class="line"></span>
+      <div class="item">
+        <h4>链接</h4>
+        <p>
+          <a href="#">百度</a>
+          <a href="#">哔哩哔哩</a>
+        </p>
+      </div>
+      <span class="line"></span>
+      <div class="item">
+        <h4>反馈</h4>
+        <p>
+          <a href="#">意见反馈</a>
+          <a href="#">举报</a>
+          <a href="#">帮助中心</a>
+          <br>
+          <a href="#">免责声明</a>
+          <a href="#">用户协议</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-img fr">
+      <img src="images/footer-logo.gif" alt="#">
+    </div>
+  </div>
+  <div class="footer-middle clearfix">
+    <div class="item">
+      <a href="#"><i class="icon icon-1"></i>中国互联网举报中心</a>
+      <a href="#"><i class="icon icon-2"></i>网络文化经营单位</a>
+    </div>
+    <div class="item">
+      <span>京8888888888号</span>
+    </div>
+    <div class="item">
+      <span>节目制作经营许可证66666666666号</span>
+
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <img src="images/logo-gray.png" alt="#">
+    <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。********</p>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="{{url_for('static',filename='js/bootstrap.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+{% endblock %}

@@ -21,122 +21,18 @@
 <div class="header-nav">
   <div class="nav-wrap auto-width clearfix">
     <a href="#" class="nav-item nav-cur">首页</a>
-    <a href="#" class="nav-item">番剧</a>
-    <!-- for循环下面列表 -->
-    <a href="#" class="nav-item nav-item_hover">动画</a>
-    <a href="#" class="nav-item nav-item_hover">音乐</a>
-    <a href="#" class="nav-item nav-item_hover">舞蹈</a>
-    <a href="#" class="nav-item nav-item_hover">游戏</a>
-    <a href="#" class="nav-item nav-item_hover">娱乐</a>
-    <a href="#" class="nav-item nav-item_hover">科技</a>
-    <a href="#" class="nav-item nav-item_hover">影视</a>
-    <a href="#" class="nav-item nav-item_hover">体育</a>
-    <a href="#" class="nav-item nav-item_hover">彼女</a>
-    <a href="#" class="nav-item nav-item_hover">鱼塘</a>
-    <a href="#" class="nav-item nav-item_hover">文章</a>
-    <a href="#" class="nav-item nav-item_hover">合辑</a>
+    {% for i in labels %}
+      <a href="#" class="nav-item nav-item_hover" onclick="get()">{{i}}</a>
+    {% endfor %}
     <a href="#" class="nav-rank">
       <i class="iconfont icon-rank"></i>
       全站排行榜
     </a>
   </div>
 
-  <div class="subNav">
-    <!-- for循环 -->
-    <ul class="auto-width">
-      <!-- for循环 -->
-      <li class="subNav-item">
-        <a href="#">动画短片</a>
-        <a href="#">动画资讯</a>
-        <a href="#">旧番补档</a>
-        <a href="#">新番连载</a>
-        <a href="#">MAD·AMV</a>
-        <a href="#">MMD·3D</a>
-        <a href="#">2.5次元</a>
-        <a href="#">国产动画</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">原创·翻唱</a>
-        <a href="#">演奏</a>
-        <a href="#">Vocaloid</a>
-        <a href="#">日系音乐</a>
-        <a href="#">综合音乐</a>
-        <a href="#">演唱会</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">宅舞</a>
-        <a href="#">综合舞蹈</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">主机单机</a>
-        <a href="#">游戏集锦</a>
-        <a href="#">电子竞技</a>
-        <a href="#">LOL</a>
-        <a href="#">守望先锋</a>
-        <a href="#">桌游卡牌</a>
-        <a href="#">Mugen</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">生活娱乐</a>
-        <a href="#">鬼畜调教</a>
-        <a href="#">萌宠</a>
-        <a href="#">美食</a>
-        <a href="#">综艺</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">SF</a>
-        <a href="#">黑科技</a>
-        <a href="#">数码</a>
-        <a href="#">广告</a>
-        <a href="#">白科技</a>
-        <a href="#">自我发电</a>
-        <a href="#">科学技术</a>
-        <a href="#">汽车</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">电影</a>
-        <a href="#">日剧</a>
-        <a href="#">美剧</a>
-        <a href="#">国产剧</a>
-        <a href="#">网络剧</a>
-        <a href="#">韩剧</a>
-        <a href="#">布袋·特摄</a>
-        <a href="#">纪录片</a>
-        <a href="#">其他</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">综合体育</a>
-        <a href="#">足球</a>
-        <a href="#">篮球</a>
-        <a href="#">搏击</a>
-        <a href="#">11区体育</a>
-        <a href="#">惊奇体育</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">造型</a>
-        <a href="#">西皮</a>
-        <a href="#">爱豆</a>
-        <a href="#">其他</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">军事</a>
-        <a href="#">历史</a>
-        <a href="#">焦点</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">文章综合</a>
-        <a href="#">工作·情感</a>
-        <a href="#">漫画·轻小说</a>
-        <a href="#">游戏</a>
-      </li>
-      <li class="subNav-item">
-        <a href="#">AcFun专题</a>
-      </li>
-    </ul>
-  </div>
+
 </div>
 {% endblock %}
-</div>
 
 {% block main %}
 <!---------- 主体内容 ---------->
@@ -148,11 +44,9 @@
     <div id="sliderBox" class="slider-box fl">
       <!-- for循环 -->
       <ul class="slider">
-        <li data-title="Picture 1" class="slider-item"><a href="#"><img src="images/cont/slider-1.jpg" alt="#"></a></li>
-        <li data-title="Picture 2" class="slider-item"><a href="#"><img src="images/cont/slider-2.jpg" alt="#"></a></li>
-        <li data-title="Picture 3" class="slider-item"><a href="#"><img src="images/cont/slider-3.jpg" alt="#"></a></li>
-        <li data-title="Picture 4" class="slider-item"><a href="#"><img src="images/cont/slider-4.jpg" alt="#"></a></li>
-        <li data-title="Picture 5" class="slider-item"><a href="#"><img src="images/cont/slider-5.jpg" alt="#"></a></li>
+        {% for i in get_img() %}
+        <li data-title="Picture {{i}}" class="slider-item"><a href="{{url_for('commic.comic',pk=i)}}"><img src="images/cont/slider-{{i}}.jpg" alt="#"></a></li>
+        {% endfor %}
       </ul>
       <div class="btn-box">
         <a href="javascript:;" class="btn-item btn-item__active"></a>
@@ -164,9 +58,10 @@
     </div>
     <!-- for循环 -->
     <ul class="slider-menu fl">
+      {% for i in get_img() %}
       <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__1.jpg" alt="#">
+        <a href="{{url_for('commic.comic',pk=i)}}" class="item">
+          <img src="images/cont/slider-menu__{{i}}.jpg" alt="#">
           <div class="mask-gradient">
             <p>嗨呀！好气啊！OW堡傻缺集锦</p>
             <div class="text-box">
@@ -179,164 +74,12 @@
           </div>
         </a>
       </li>
-      <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__2.jpg" alt="#">
-          <div class="mask-gradient">
-            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
-            <div class="text-box">
-              <em>UP: AcFun出品</em>
-              <span class="info">
-                <i class="iconfont icon-collect">14.9万</i>
-                <i class="iconfont icon-collect">165</i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__3.jpg" alt="#">
-          <div class="mask-gradient">
-            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
-            <div class="text-box">
-              <em>UP: AcFun出品</em>
-              <span class="info">
-                <i class="iconfont icon-collect">14.9万</i>
-                <i class="iconfont icon-collect">165</i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__4.jpg" alt="#">
-          <div class="mask-gradient">
-            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
-            <div class="text-box">
-              <em>UP: AcFun出品</em>
-              <span class="info">
-                <i class="iconfont icon-collect">14.9万</i>
-                <i class="iconfont icon-collect">165</i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__6.jpg" alt="#">
-          <div class="mask-gradient">
-            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
-            <div class="text-box">
-              <em>UP: AcFun出品</em>
-              <span class="info">
-                <i class="iconfont icon-collect">14.9万</i>
-                <i class="iconfont icon-collect">165</i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="slider-menu__item">
-        <a href="#" class="item">
-          <img src="images/cont/slider-menu__5.jpg" alt="#">
-          <div class="mask-gradient">
-            <p>嗨呀！好气啊！OW堡傻缺集锦</p>
-            <div class="text-box">
-              <em>UP: AcFun出品</em>
-              <span class="info">
-                <i class="iconfont icon-collect">14.9万</i>
-                <i class="iconfont icon-collect">165</i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </li>
+      {% endfor %}
     </ul>
   </section>
 
   <!-- 热门推荐 -->
-  <section class="area clearfix area-recommend">
-    <header class="area-header">
-      <h2 class="title">
-        <img src="images/area-title__1.gif" alt="#">
-        <b>热门推荐</b>
-        <em>十分好评快来看啦</em>
-      </h2>
-    </header>
-    <div class="area-cont">
-      <div class="area-main fl">
-        <!-- for循环 -->
-        <ul class="area-menu fl clearfix">
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-            </a>
-            <div class="info">
-              <a href="#" class="title">这只喵技能树突破天际啦!</a>
-              <a href="#" class="userName">UP: iphone猫</a>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__2.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-            </a>
-            <div class="info">
-              <a href="#" class="title">这只喵技能树突破天际啦!</a>
-              <a href="#" class="userName">UP: iphone猫</a>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__3.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-            </a>
-            <div class="info">
-              <a href="#" class="title">这只喵技能树突破天际啦!</a>
-              <a href="#" class="userName">UP: iphone猫</a>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__4.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-            </a>
-            <div class="info">
-              <a href="#" class="title">这只喵技能树突破天际啦!</a>
-              <a href="#" class="userName">UP: iphone猫</a>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__5.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-            </a>
-            <div class="info">
-              <a href="#" class="title">这只喵技能树突破天际啦!</a>
-              <a href="#" class="userName">UP: iphone猫</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="area-side fr">
-        <a href="#"><img src="images/cont/slider-menu__6.jpg" alt="#"></a>
-      </div>
-    </div>
-  </section>
+
 
   <!-- 动画 -->
   <section class="area clearfix area-game">
@@ -345,7 +88,7 @@
         <header class="area-header">
           <h2 class="title">
             <img src="images/area-title__7.gif" alt="#">
-            <b>热门漫画</b>
+            <b>热门漫画</b> 
             <em>大力喂蕉不要停</em>
           </h2>
           <!-- 需要实现换一批的功能 -->
@@ -550,7 +293,7 @@
       <div class="area-side fr" JS-tab="true">
         <header class="area-header">
           <h2 class="title">
-            <b>动画排行榜</b>
+            <b>漫画排行榜</b>
           </h2>
           <div class="tab-rank tab fr">
             <a href="javascript:;" class="tab-rank__item active">日榜</a>
@@ -817,4 +560,8 @@
   </div>
 </div>
 </div>
+{% endblock %}
+
+{% block script %}
+
 {% endblock %}
