@@ -1,4 +1,4 @@
-from flask import Flask, render_template,url_for
+from flask import Flask, render_template, url_for, flash
 from flask import request,session,g,redirect
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
@@ -9,13 +9,32 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)  # 实例化对象
 
+# 标签
+labels = ['少女漫画','热血漫画','穿越漫画','完结漫画','修仙漫画','黑白漫画','韩国漫画','全彩漫画',
+          '惊悚漫画']
+
+img = [1,2,3,4,5,6]
+
+@app.template_global()
+def get_username():
+    if 'username' in session:
+        return session['username']
+    return None
+
+@app.template_global()
+def get_labels():
+    return labels
+
+@app.template_global()
+def get_img():
+    return img
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',labels=labels)
 
 @app.route('/regist',methods=['GET','POST'])
 def regist():
-    notice = ""
     if request.method == 'POST':
         re_username = request.form.get('re_name',None)
         re_password = request.form.get('re_password',None)
@@ -23,27 +42,38 @@ def regist():
         re_password_check = request.form.get('re_password_check',None)
         notice = user.User.user_insert(user.User(),re_username,
                                         re_password,re_password_check,re_email)
+        flash(notice)
         if notice == "注册成功":
-            session.clear()
+            # session.clear()
             return render_template('login.html',notice=notice)
         else:
             return render_template('login.html',notice=notice)
+    return render_template('login.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
     notice = ""
+    # session.clear()
     if request.method == 'POST':
         username = request.form.get('user_name', None)
         password = request.form.get('user_password', None)
+        vcode = request.form.get('user_vcode',None)
         session['username'] = username
+        notice = user.User.validate(user.User(),username,password,vcode)
         # 设置十分钟的session存在时间
-        if username == 'ccc' and password == '123':
+        if notice == '登录成功':
             print('登录成功!!!')
-            return render_template('index.html')
+            return render_template('index.html',username=username,labels=labels)
         else:
-            notice = '登录失败'
-    return render_template('login.html',notice=notice)
+            flash(notice)
+            return render_template('login.html',notice=notice)
+    else:
+        session.clear()
+        return render_template('login.html',notice=notice)
 
+@app.route('/ca')
+def ca():
+    return render_template('a.html')
 
 if __name__ == '__main__':
     from Model import user,comic,comment
