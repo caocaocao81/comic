@@ -4,7 +4,7 @@
 {% block link %}
 <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
 <link href="{{url_for('static',filename='css/comment.css')}}" rel="stylesheet">
-<link href="{{url_for('static',filename='css/bootstrap-grid.css')}}" rel="stylesheet">
+<link href="{{url_for('static',filename='css/bootstrap.main.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block header_nav %}
@@ -31,10 +31,11 @@
         
         <div class="col-md-8 col-md-offset-2">
             <div class="container">
+              {% if comic_list%}
                 {% for i in comic_list %}
                 <div class="row">
                     <div class="col-md-3">
-                        <img src="{{url_for('static',filename='images/cont/slider-1.jpg')}}" style="width: 100%;" >
+                        <a href="{{url_for('commic.comic',pk=i.id)}}"><img src="{{url_for('static',filename='images/cont/slider-1.jpg')}}" style="width: 100%;" ></a>
                     </div>
                     <div class="col-md-9">
                         <p>简介:{{i.introduce}}</p>
@@ -44,7 +45,7 @@
                                 author:{{i.author}}
                             </div>
                             <div class="col-md-3 ">
-                                time:{{i.update_time}}
+                                time:{{i.update}}
                             </div>
                             <div class="col-md-3 ">
                                 <i class="fa fa-heart-o" > {{i.like_count}}</i>
@@ -58,11 +59,20 @@
                 </div>
                 <br>
                 {% endfor %}
+              {% else %}
+              <div class="row" style="height: 60rem; text-align: center;">
+                  <div style="position: absolute;top: 25%;left: 35%;font: 24px 华文琥珀;">
+                      <a>没有找到资源哦！！！</a> 
+                  </div>
+              </div>
+              {% endif %}
+              {% if page.items %}
                 {{ pg.page(page,"commic.get_comic_list",comic_name) }}
+              {% endif %}
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}
 
 
@@ -113,7 +123,7 @@
       </div>
     </div>
     <div class="footer-img fr">
-      <img src="images/footer-logo.gif" alt="#">
+      <img src="{{url_for('static',filename='images/footer-logo.gif')}}" alt="#">
     </div>
   </div>
   <div class="footer-middle clearfix">
@@ -130,7 +140,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <img src="images/logo-gray.png" alt="#">
+    <img src="{{url_for('static',filename='images/logo-gray.png')}}" alt="#">
     <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。********</p>
   </div>
 </div>

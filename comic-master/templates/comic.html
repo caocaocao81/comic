@@ -86,19 +86,19 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3" style="padding: 0rem;">
-                                        <a href="#" class="btn btn-warning">观看漫画</a> 
+                                        <a href="{{comic.url}}" class="btn btn-warning">观看漫画</a> 
                                     </div>
                                     <div class="col-md-1">
 
                                     </div>
                                     <div class="col-md-2">
-                                        {% if not true%}
-                                        <button onclick="collect()"  data-toggle="tooltip" data-placement="top" title="点击收藏！">
-                                            <i class="fa fa-star" style="font-size: 24px;"></i>
+                                        {% if not flag%}
+                                        <button id='b{{comic.id}}'  data-toggle="tooltip" data-placement="top" title="点击收藏！">
+                                            <i id='{{comic.id}}' onclick="collect(this)" class="fa fa-star-o" style="font-size: 24px;"></i>
                                         </button>
                                         {% else %}
-                                        <button onclick="discollect()"  data-toggle="tooltip" data-placement="top" title="取消收藏！">
-                                            <i class="fa fa-star-o" style="font-size: 24px;"></i>
+                                        <button id='b{{comic.id}}' data-toggle="tooltip" data-placement="top" title="取消收藏！">
+                                            <i id='{{comic.id}}' class="fa fa-star" onclick="collect(this)" style="font-size: 24px;"></i>
                                         </button>
                                         {% endif %}
                                     </div>
@@ -180,4 +180,44 @@
 {% block script %}
 <script src="{{url_for('static',filename='js/bootstrap.js')}}"></script>
 <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+<script>
+    function collect(dom){
+            id = dom.getAttribute("id");
+            bid = 'b'+id;
+            dname = dom.className
+            $.getJSON('/comic/like/?id={{comic.id}}&comicname={{comic.name}}&img={{comic.img}}',
+                function(data) {
+                    console.log('c');
+                    if(data=='1'){
+                        if(dname=='fa fa-star-o'){
+                            document.getElementById(bid).title = '点击收藏！';  
+                            document.getElementById(id).className = 'fa fa-star';
+                            document.getElementById(id).onclick = function(){
+                                    uncollect(this);
+                                }; 
+                        }
+                    }
+                });
+                return false;
+        };
+        function uncollect(dom){
+            id = dom.getAttribute("id");
+            bid = 'b'+id;
+            dname = dom.className
+            $.getJSON('/comic/like/?id={{comic.id}}&comicname={{comic.name}}&img={{comic.img}}',
+                function(data) {
+                    console.log('un');
+                    if(data=='1'){
+                        if(dname=='fa fa-star'){
+                            document.getElementById(bid).title = '取消收藏！';
+                            document.getElementById(id).className = 'fa fa-star-o';
+                            document.getElementById(id).onclick = function(){
+                                    collect(this);
+                                }; 
+                        }
+                    }
+                });
+                return false;
+        };
+</script>
 {% endblock %}

@@ -16,6 +16,39 @@ labels = ['少女漫画','热血漫画','穿越漫画','完结漫画','修仙漫
 img = [1,2,3,4,5,6]
 
 @app.template_global()
+def get_comic_like(id):
+    redis = Redis.Re()
+    count = redis.get_comic_like(id)
+    print(count)
+    if not count:
+        return 0
+    return count
+
+@app.template_global()
+def get_comic_list11():
+    com = comic.Comic()
+    comic_list = com.get_cList_only_11()  # 随机获取11个漫画
+    return comic_list
+
+@app.template_global()
+def get_user_like():
+    redis = Redis.Re()
+    username = get_username()
+    if username:
+        return redis.get_user_like(username)
+    return None
+
+
+@app.template_global()
+def get_user_view():
+    redis = Redis.Re()
+    username = get_username()
+    if username:
+        return redis.get_user_view(username)
+    return None
+
+
+@app.template_global()
 def get_username():
     if 'username' in session:
         return session['username']
@@ -28,6 +61,13 @@ def get_labels():
 @app.template_global()
 def get_img():
     return img
+
+
+@app.template_global()
+def get_comic_top_list():
+    comi = comic.Comic()
+    return comi.get_cList_orderBy_lC()
+
 
 @app.route('/')
 def index():
@@ -76,11 +116,12 @@ def ca():
     return render_template('a.html')
 
 if __name__ == '__main__':
-    from Model import user,comic,comment
-    from Control import commic_control,comment_control,user_control
+    from Model import user,comic,comment,Redis
+    from Control import commic_control,comment_control,user_control,admin_control
     app.register_blueprint(comment_control.comment)
     app.register_blueprint(commic_control.comc)
     app.register_blueprint(user_control.user)
+    app.register_blueprint(admin_control.admin)
 
     app.run(debug=True,host='127.0.0.1',port=3399)
 

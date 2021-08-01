@@ -79,13 +79,51 @@
               <i class="iconfont icon-history"></i>
             </a>
             <div class="guide-hover">
+              {% if not get_user_view() %}
               <span class="text">尚未记录任何历史信息。</span>
+              {% else %}
+              <div class="row">
+                {% for i in get_user_view()%}
+                  <div class="col-md-4">
+                    <a href="{{url_for('commic.comic',pk=i.id)}}" class="item" >
+                      <img src="images/cont/slider-menu__1.jpg" style="width: 60%;position: relative;" alt="#">
+                      <div class="mask-gradient" style="font-size: 7px;">
+                        <p><strong>{{i.comic_name}}</strong></p>
+                        <div class="text-box">
+                          <em>观看时间:{{i['time']}}</em>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <br>
+                {% endfor %}
+              </div>
+              {% endif %} 
             </div>
           </li>
           <li class="guide-item collect">
             <a href="#">
               <i class="iconfont icon-collect"></i>
             </a>
+            <div class="guide-hover" style="position: absolute;top: 100%;left: -150%;">
+              {% if not get_user_like() %}
+              <span class="text">你还没有收藏动漫哦！</span>
+              {% else %}
+              <div class="row" style="width: 200px;">
+                {% for i in get_user_like()%}
+                  <div class="col-md-4">
+                    <a href="{{url_for('commic.comic',pk=i.id)}}" class="item" >
+                      <img src="images/cont/slider-menu__1.jpg" style="width: 60%;position: relative;" alt="#">
+                      <div class="mask-gradient" style="font-size: 7px;">
+                        <p><strong>{{i.comic_name}}</strong></p>
+                      </div>
+                    </a>
+                  </div>
+                  <br>
+                {% endfor %}
+              </div>
+              {% endif %} 
+            </div>
           </li>
         </ul>
       </div>
@@ -113,7 +151,6 @@
   <a href="javascript:;" id="back_top" class="iconfont icon-up"></a>
   <script src="{{url_for('static',filename='js/jquery-3.1.1.min.js')}}"></script>
   <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
-  <!-- <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
   <script src="{{url_for('static',filename='js/script.js')}}"></script>
   <script src="{{url_for('static',filename='js/sliderbox.js')}}"></script>
   <script src="{{url_for('static',filename='js/tab.js')}}"></script>

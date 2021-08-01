@@ -2,7 +2,7 @@
 
 
 {% block link %}
-
+<link rel="stylesheet"  href="css/bootstrap.min.css" /><!--CSS RESET-->
 {% endblock %}
 
 {% block head_bg %}
@@ -104,190 +104,24 @@
         <div class="area-big">
           <a href="#" class="img">
             <img src="images/cont/area-menu__big.gif" alt="#">
-            <i class="iconfont icon-play"></i>
-            <span class="mask">
-              <em class="time">4:47</em>
-            </span>
           </a>
         </div>
         <!-- for循环 jinja2中for循环为：{% for i in xxx %}  {% endfor %} 然后那些格式类似的列表for循环给予i的值即可-->
         <ul class="area-menu clearfix">
+          {% for i in get_comic_list11() %}
           <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
+            <a href="{{url_for('commic.comic',pk=i.id)}}" class="img">
+              <img src="{{i.img}}" alt="#">
               <span class="icon-recommend">推荐</span>
             </a>
             <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
+              <a href="{{url_for('commic.comic',pk=i.id)}}" class="change-title">{{i.introduce}}</a>
               <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
+                <i class="iconfont icon-collect fr">{{get_comic_like(id=i.id)}}</i>
               </span>
             </div>
           </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
-          <li class="area-menu__item">
-            <a href="#" class="img">
-              <img src="images/cont/area-menu__1.jpg" alt="#">
-              <span class="mask">
-                <em class="time">4:47</em>
-              </span>
-              <span class="icon-recommend">推荐</span>
-            </a>
-            <div class="info">
-              <a href="#" class="change-title">抢来的感情究竟能不能感到幸福？!</a>
-              <span class="play-info clearfix">
-                <i class="iconfont icon-play fl">2372</i>
-                <i class="iconfont icon-collect fr">999</i>
-              </span>
-            </div>
-          </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="area-side fr" JS-tab="true">
@@ -295,101 +129,36 @@
           <h2 class="title">
             <b>漫画排行榜</b>
           </h2>
-          <div class="tab-rank tab fr">
-            <a href="javascript:;" class="tab-rank__item active">日榜</a>
-            <a href="javascript:;" class="tab-rank__item">周榜</a>
-          </div>
         </header>
         <div class="side-rank">
           <!-- for循环 -->
           <ul class="tab-cont tab-cont__active">
+            {% for i in range(3)%}
             <li class="has-img">
               <a href="#" class="img fl">
                 <img src="images/cont/side-img1.jpg" alt="#">
-                <span class="rank">1</span>
+                <span class="rank">{{i+1}}</span>
               </a>
               <div class="info fr">
-                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
-                <p><a href="#">UP: 关注撸主三十年</a></p>
+                <a href="#" class="text-overflow">{{get_comic_top_list()[i].name}}</a>
+                <p><a href="#">author: {{get_comic_top_list()[i].author}}</a></p>
                 <p>
-                  <i class="iconfont icon-play fl">9898</i>
-                  <i class="iconfont icon-collect fr">9898</i>
+                  <i class="iconfont icon-collect fl">{{get_comic_top_list()[i].like_count}}</i>
                 </p>
               </div>
             </li>
-            <li class="has-img">
-              <a href="#" class="img fl">
-                <img src="images/cont/side-img1.jpg" alt="#">
-                <span class="rank">2</span>
-              </a>
-              <div class="info fr">
-                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
-                <p><a href="#">UP: 关注撸主三十年</a></p>
-                <p>
-                  <i class="iconfont icon-play fl">9898</i>
-                  <i class="iconfont icon-collect fr">9898</i>
-                </p>
-              </div>
-            </li>
-            <li class="has-img last">
-              <a href="#" class="img fl">
-                <img src="images/cont/side-img1.jpg" alt="#">
-                <span class="rank">3</span>
-              </a>
-              <div class="info fr">
-                <a href="#" class="text-overflow">2016年11月第3周碉堡傻缺视频合辑</a>
-                <p><a href="#">UP: 关注撸主三十年</a></p>
-                <p>
-                  <i class="iconfont icon-play fl">9898</i>
-                  <i class="iconfont icon-collect fr">9898</i>
-                </p>
-              </div>
-            </li>
+            {% endfor %}
+            {% for i in range(3,10)%}
             <li>                  
               <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">4</span>
-                微小而确实的幸福
+                <span class="rank-num">{{i+1}}</span>
+                {{get_comic_top_list()[i].name}}
               </a>
             </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">5</span>
-                微小而确实的幸福
-              </a>
-            </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">6</span>
-                微小而确实的幸福
-              </a>
-            </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">7</span>
-                微小而确实的幸福
-              </a>
-            </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">8</span>
-                微小而确实的幸福
-              </a>
-            </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">9</span>
-                微小而确实的幸福
-              </a>
-            </li>
-            <li>                  
-              <a href="#" class="rank-item text-overflow">
-                <span class="rank-num">10</span>
-                微小而确实的幸福
-              </a>
-            </li>
+            {% endfor %}
           </ul>
           <!-- for循环 -->
-          <ul class="tab-cont">
+          <!-- <ul class="tab-cont">
             <li class="has-img">
               <a href="#" class="img fl">
                 <img src="images/cont/side-img2.jpg" alt="#">
@@ -474,7 +243,7 @@
                 微小而确实的幸福
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
         <a href="#" class="more">查看完整榜单 ></a>
       </div>
